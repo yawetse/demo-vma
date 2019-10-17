@@ -1,0 +1,7 @@
+{
+  "name": "test-vmx",
+  "private": true,
+  "dependencies": {
+    "@viewx/vxa": "0.0.8"
+  }
+}
