@@ -1,39 +1,39 @@
 var spreadPosts = {
   component: 'ReactBootstrap.Card',
   props: {
-    style: { width: '18rem' }
+    style: {
+      width: '18rem'
+    }
   },
   thisprops: {
-    key: [ '__item', 'id' ]
+    key: ['__item', 'id']
   },
   passprops: true,
-  children: [
-    {
+  children: [{
       component: 'ReactBootstrap.Card.Header',
       thisprops: {
-        _children: [ '__item', 'id' ]
+        _children: ['__item', 'id']
       }
     },
     {
       component: 'ReactBootstrap.Card.Body',
       passprops: true,
-      children: [
-        {
+      children: [{
           component: 'ReactBootstrap.Card.Title',
           thisprops: {
-            _children: [ '__item', 'title' ]
+            _children: ['__item', 'title']
           }
         },
         {
           component: 'ReactBootstrap.Card.Text',
           thisprops: {
-            _children: [ '__item', 'body' ]
+            _children: ['__item', 'body']
           }
         },
         {
           passprops: true,
           "component": "Link",
-          
+
           // __dangerouslyEvalProps: {
           __dangerouslyEvalProps: {
             to: `(function({jsonx}){
@@ -41,17 +41,15 @@ var spreadPosts = {
               return '/posts/'+jsonx.props.__item.id+'/comments';
             })`
           },
-          children: [
-            {
+          children: [{
 
-              component: 'ReactBootstrap.Button',
-              props: {
-                variant: "primary"
-              },
-              children: 'comments'
+            component: 'ReactBootstrap.Button',
+            props: {
+              variant: "primary"
+            },
+            children: 'comments'
 
-            }
-          ]
+          }]
         }
       ]
     },
@@ -60,7 +58,7 @@ var spreadPosts = {
 
 window.placeholderTemplates = {
   "templates": {
-    
+
     loading: {
       '/:catchall*': {
         jsonx: {
@@ -70,109 +68,101 @@ window.placeholderTemplates = {
       },
     },
     "header": {
-			"/:catchall*": {
-				"jsonx": {
-					"component": "header",
-          "children": [
-            {
+      "/:catchall*": {
+        "jsonx": {
+          "component": "header",
+          "children": [{
               "component": "ReactBootstrap.Navbar",
               props: {
                 bg: 'dark',
                 variant: 'dark',
                 fixed: 'top',
-                expand:'sm'
+                expand: 'sm'
               },
-                "children": [
-                  {
-                    component: 'ReactBootstrap.Navbar.Brand',
-                    children: [
+              "children": [{
+                  component: 'ReactBootstrap.Navbar.Brand',
+                  children: [{
+
+                    "component": "Link",
+                    "props": {
+                      "to": "/home"
+                    },
+                    children: 'My Site'
+                  }]
+                },
+                {
+                  component: 'ReactBootstrap.Navbar.Toggle',
+                  props: {
+                    ariaControls: "basic-navbar-nav"
+                  }
+                },
+                {
+                  component: 'ReactBootstrap.Navbar.Collapse',
+                  children: [{
+                    component: 'ReactBootstrap.ButtonToolbar',
+                    children: [{
+                        "component": "ReactBootstrap.Button",
+                        props: {
+                          variant: 'light'
+                        },
+                        "children": [{
+                            component: 'Fragment',
+                            children: 'Cart'
+                          },
+                          {
+                            "component": "ReactBootstrap.Badge",
+                            props: {
+                              variant: "secondary"
+                            },
+                            thisprops: {
+                              _children: ['store', 'cartItems', 'length']
+                            }
+                            // thisstate: {
+                            //   _children:['cartItems','length']
+                            // }
+                          }
+                        ],
+                        "__dangerouslyBindEvalProps": {
+                          "onClick": "(function(){ console.log('Logout onClick this',this); this.viewx.Functions.logoutUser(/**/);   })"
+                        },
+                        "thisprops": {
+                          "user": ["user"]
+                        },
+
+                      },
+                      {
+                        "component": "ReactBootstrap.Button",
+                        "children": "Logout",
+                        "__dangerouslyBindEvalProps": {
+                          "onClick": "(function(){ console.log('Logout onClick this',this); this.viewx.Functions.logoutUser(/**/);   })"
+                        },
+                        "thisprops": {
+                          "user": ["user"]
+                        },
+                        "comparisonprops": [{
+                          "left": ["user", "loggedIn"],
+                          "operation": "==",
+                          "right": true
+                        }]
+                      },
                       {
 
-                        "component": "Link",
-                        "props": {
-                          "to": "/home"
+                        "component": "ReactBootstrap.Button",
+                        "children": "Login",
+                        "__dangerouslyBindEvalProps": {
+                          "onClick": "(function(){ console.log('Login onClick this',this); console.log('onClick arguments',arguments); this.props.history.push(this.viewx.settings.routes.login); })"
                         },
-                        children:'My Site'
+                        "thisprops": {
+                          "user": ["user"]
+                        },
+                        "comparisonprops": [{
+                          "left": ["user", "loggedIn"],
+                          "operation": "==",
+                          "right": false
+                        }]
                       }
                     ]
-                  },
-                  {
-                    component: 'ReactBootstrap.Navbar.Toggle',
-                    props: {
-                      ariaControls:"basic-navbar-nav"
-                    }
-                  },
-                  {
-                    component: 'ReactBootstrap.Navbar.Collapse',
-                    children: [
-                      {
-                        component: 'ReactBootstrap.ButtonToolbar',
-                        children: [
-                          {
-                            "component": "ReactBootstrap.Button",
-                            props: {
-                              variant:'light'
-                            },
-                            "children": [
-                              {
-                                component: 'Fragment',
-                                children:'Cart'
-                              },
-                              {
-                                "component": "ReactBootstrap.Badge",
-                                props: {
-                                  variant:"secondary"
-                                },
-                                thisprops: {
-                                  _children:['store','cartItems','length']
-                                }
-                                // thisstate: {
-                                //   _children:['cartItems','length']
-                                // }
-                              }
-                            ],
-                            "__dangerouslyBindEvalProps": {
-                              "onClick": "(function(){ console.log('Logout onClick this',this); this.viewx.Functions.logoutUser(/**/);   })"
-                            },
-                            "thisprops":{
-                              "user":["user"]
-                            },
-                            
-                          },
-                          {
-                            "component": "ReactBootstrap.Button",
-                            "children": "Logout",
-                            "__dangerouslyBindEvalProps": {
-                    "onClick": "(function(){ console.log('Logout onClick this',this); this.viewx.Functions.logoutUser(/**/);   })"
-                                  },
-                            "thisprops":{
-                              "user":["user"]
-                            },
-                            "comparisonprops": [{
-                                "left": ["user","loggedIn"],
-                                "operation":"==",
-                                "right": true
-                              }]
-                          },
-                          {
-                            
-                            "component": "ReactBootstrap.Button",
-                            "children": "Login",
-                            "__dangerouslyBindEvalProps": {
-                              "onClick": "(function(){ console.log('Login onClick this',this); console.log('onClick arguments',arguments); this.props.history.push(this.viewx.settings.routes.login); })"
-                            },
-                            "thisprops":{
-                              "user":["user"]
-                            },
-                            "comparisonprops": [{
-                                "left": ["user","loggedIn"],
-                                "operation":"==",
-                                "right": false
-                              }]
-                          }
-                        ]
-                      },
-                    ],
+                  }, ],
                 },
               ]
             },
@@ -183,45 +173,39 @@ window.placeholderTemplates = {
                 variant: 'light',
                 fixed: 'top',
                 style: {
-                  top:'56px'
+                  top: '56px'
                 },
                 expand: 'sm'
               },
-              children: [
-                {
+              children: [{
                   "component": "Link",
                   "props": {
                     "to": "/posts"
                   },
-                  children: [
-                    {
-                      component: 'ReactBootstrap.Button',
-                      children:'Posts'
-                    }
-                  ]
+                  children: [{
+                    component: 'ReactBootstrap.Button',
+                    children: 'Posts'
+                  }]
                 },
                 {
                   "component": "Link",
                   "props": {
                     "to": "/albums"
                   },
-                  children: [
-                    {
-                      component: 'ReactBootstrap.Button',
-                      children:'Albums'
-                    }
-                  ]
+                  children: [{
+                    component: 'ReactBootstrap.Button',
+                    children: 'Albums'
+                  }]
                 },
                 {
                   component: 'ReactBootstrap.Form',
                   props: {
-                    inline:true,
+                    inline: true,
                   },
-                  children: [
-                    {
-                      component: 'ReactBootstrap.Form.Control',
-                      __dangerouslyBindEvalProps: {
-                        onChange: `(function(e){
+                  children: [{
+                    component: 'ReactBootstrap.Form.Control',
+                    __dangerouslyBindEvalProps: {
+                      onChange: `(function(e){
                           const update=(e)=>{
                             const updatedState = Object.assign({},this.state,{
                               searchUrl: e.target.value.length
@@ -232,9 +216,8 @@ window.placeholderTemplates = {
                           }
                           debounce(update,200,true)(e);
                         })`,
-                      }
                     }
-                  ]
+                  }]
                 }
               ]
             },
@@ -242,262 +225,257 @@ window.placeholderTemplates = {
               "component": "ReactBootstrap.Container",
               props: {
                 style: {
-                  marginTop:'10rem'
+                  marginTop: '10rem'
                 }
               },
-              children: [
-                {
-                  component: 'DynamicComponent',
-                  props: {
-                    jsonx: {
-                      component: 'div',
-                      children: [
-                        {
+              children: [{
+                component: 'DynamicComponent',
+                props: {
+                  jsonx: {
+                    component: 'div',
+                    children: [{
 
-                          component: 'ReactBootstrap.CardColumns',
-                          resourceprops: {
-                            __spread:['DynamicComponentData'],
-                          },
-                          __spreadComponent: spreadPosts,
-                        }
-                      ]
-                    }
-                  },
-                  thisstate: {
-                    fetchURL:['searchUrl']
+                      component: 'ReactBootstrap.CardColumns',
+                      resourceprops: {
+                        __spread: ['DynamicComponentData'],
+                      },
+                      __spreadComponent: spreadPosts,
+                    }]
                   }
-                  /*
-                  (props={}) {
-                    const { useCache = true, cacheTimeout = 60 * 60 * 5, loadingJSONX= { component:'div', children:'...Loading', },
-                    loadingErrorJSONX= { component:'div', children:[{component:'span',children:'Error: '},{ component:'span',  resourceprops:{_children:['error','message']}, }], }, cacheTimeoutFunction = () => { }, jsonx, transformFunction = data => data, fetchURL, fetchOptions, } = props;
-                  */
+                },
+                thisstate: {
+                  fetchURL: ['searchUrl']
+                }
+                /*
+                (props={}) {
+                  const { useCache = true, cacheTimeout = 60 * 60 * 5, loadingJSONX= { component:'div', children:'...Loading', },
+                  loadingErrorJSONX= { component:'div', children:[{component:'span',children:'Error: '},{ component:'span',  resourceprops:{_children:['error','message']}, }], }, cacheTimeoutFunction = () => { }, jsonx, transformFunction = data => data, fetchURL, fetchOptions, } = props;
+                */
+              }]
+            }
+          ]
+        }
+      }
+    },
+    "root": {
+      "/home": {
+        "jsonx": {
+          "component": "div",
+          "children": [{
+              "component": "p",
+              "children": "home page"
+            },
+            {
+              "component": "ul",
+              "children": [{
+                  "component": "li",
+                  "children": [{
+                    "component": "Link",
+                    "props": {
+                      "to": "/"
+                    },
+                    "children": "index"
+                  }]
+                },
+                {
+                  "component": "li",
+                  "children": [{
+                    "component": "Link",
+                    "props": {
+                      "to": "/home"
+                    },
+                    "children": "home page"
+                  }]
+                },
+                {
+                  "component": "li",
+                  "children": [{
+                    "component": "Link",
+                    "props": {
+                      "to": "/about"
+                    },
+                    "children": "about page"
+                  }]
+                },
+                {
+                  "component": "li",
+                  "children": [{
+                    "component": "Link",
+                    "props": {
+                      "to": "/page/2"
+                    },
+                    "children": "Page two"
+                  }]
                 }
               ]
             }
           ]
-				}
-			}
-		},
-		"root": {
-			"/home": {
-				"jsonx": {
-					"component": "div",
-					"children": [{
-							"component": "p",
-							"children": "home page"
-						},
-						{
-							"component": "ul",
-							"children": [{
-									"component": "li",
-									"children": [{
-										"component": "Link",
-										"props": {
-											"to": "/"
-										},
-										"children": "index"
-									}]
-								},
-								{
-									"component": "li",
-									"children": [{
-										"component": "Link",
-										"props": {
-											"to": "/home"
-										},
-										"children": "home page"
-									}]
-								},
-								{
-									"component": "li",
-									"children": [{
-										"component": "Link",
-										"props": {
-											"to": "/about"
-										},
-										"children": "about page"
-									}]
-								},
-								{
-									"component": "li",
-									"children": [{
-										"component": "Link",
-										"props": {
-											"to": "/page/2"
-										},
-										"children": "Page two"
-									}]
-								}
-							]
-						}
-					]
-				},
-				"resources": {
-					"posts": "https://jsonplaceholder.typicode.com/posts",
-					"profile": {
-						"fetchPath": "https://jsonplaceholder.typicode.com/users/1",
-						"fetchOptions": {
-							"headers": {
-								"custom-header-one": "my header"
-							}
-						}
-					}
-				},
-				"pageData": [{
-						"tagName": "title",
-						"attributes": {
+        },
+        "resources": {
+          "posts": "https://jsonplaceholder.typicode.com/posts",
+          "profile": {
+            "fetchPath": "https://jsonplaceholder.typicode.com/users/1",
+            "fetchOptions": {
+              "headers": {
+                "custom-header-one": "my header"
+              }
+            }
+          }
+        },
+        "pageData": [{
+            "tagName": "title",
+            "attributes": {
 
-						},
-						"innerHTML": "My Home Page"
-					},
-					{
-						"tagName": "meta",
-						"attributes": {
-							"name": "theme-color",
-							"content": "#8b2d40"
-						}
-					}
-				]
-			},
-			"/about": {
-				"jsonx": {
-					"component": "div",
-					"children": [{
-							"component": "p",
-							"children": "about page"
-						},
-						{
-							"component": "ul",
-							"children": [{
-									"component": "li",
-									"children": [{
-										"component": "Link",
-										"props": {
-											"to": "/"
-										},
-										"children": "index"
-									}]
-								},
-								{
-									"component": "li",
-									"children": [{
-										"component": "Link",
-										"props": {
-											"to": "/home"
-										},
-										"children": "home page"
-									}]
-								},
-								{
-									"component": "li",
-									"children": [{
-										"component": "Link",
-										"props": {
-											"to": "/about"
-										},
-										"children": "about page"
-									}]
-								},
-								{
-									"component": "li",
-									"children": [{
-										"component": "Link",
-										"props": {
-											"to": "/page/2"
-										},
-										"children": "Page two"
-									}]
-								}
-							]
-						}
-					]
-				},
-				"resources": {
-					"album": "https://jsonplaceholder.typicode.com/albums/1",
-					"photos": {
-						"fetchPath": "https://jsonplaceholder.typicode.com/albums/1/photos"
-					}
-				},
-				"preRenderFunctions": ["func:viewx.Functions.requireAuth"],
-				"pageData": [{
-						"tagName": "title",
-						"attributes": {
+            },
+            "innerHTML": "My Home Page"
+          },
+          {
+            "tagName": "meta",
+            "attributes": {
+              "name": "theme-color",
+              "content": "#8b2d40"
+            }
+          }
+        ]
+      },
+      "/about": {
+        "jsonx": {
+          "component": "div",
+          "children": [{
+              "component": "p",
+              "children": "about page"
+            },
+            {
+              "component": "ul",
+              "children": [{
+                  "component": "li",
+                  "children": [{
+                    "component": "Link",
+                    "props": {
+                      "to": "/"
+                    },
+                    "children": "index"
+                  }]
+                },
+                {
+                  "component": "li",
+                  "children": [{
+                    "component": "Link",
+                    "props": {
+                      "to": "/home"
+                    },
+                    "children": "home page"
+                  }]
+                },
+                {
+                  "component": "li",
+                  "children": [{
+                    "component": "Link",
+                    "props": {
+                      "to": "/about"
+                    },
+                    "children": "about page"
+                  }]
+                },
+                {
+                  "component": "li",
+                  "children": [{
+                    "component": "Link",
+                    "props": {
+                      "to": "/page/2"
+                    },
+                    "children": "Page two"
+                  }]
+                }
+              ]
+            }
+          ]
+        },
+        "resources": {
+          "album": "https://jsonplaceholder.typicode.com/albums/1",
+          "photos": {
+            "fetchPath": "https://jsonplaceholder.typicode.com/albums/1/photos"
+          }
+        },
+        "preRenderFunctions": ["func:viewx.Functions.requireAuth"],
+        "pageData": [{
+            "tagName": "title",
+            "attributes": {
 
-						},
-						"innerHTML": "My about Page"
-					},
-					{
-						"tagName": "meta",
-						"attributes": {
-							"name": "theme-color",
-							"content": "#9a1c5e"
-						}
-					}
-				]
+            },
+            "innerHTML": "My about Page"
+          },
+          {
+            "tagName": "meta",
+            "attributes": {
+              "name": "theme-color",
+              "content": "#9a1c5e"
+            }
+          }
+        ]
       },
       "/albums": {
-				"jsonx": {
-					"component": "ReactBootstrap.Container",
-          "children": [
-            {
-							"component": "h1",
-							"children": "Album page!"
+        "jsonx": {
+          "component": "ReactBootstrap.Container",
+          "children": [{
+              "component": "h1",
+              "children": "Album page!"
             },
             {
               component: 'ReactBootstrap.CardColumns',
               resourceprops: {
-                __spread:['albums'],
+                __spread: ['albums'],
               },
               __spreadComponent: {
                 component: 'ReactBootstrap.Card',
                 props: {
-                  style:{ width: '18rem' }
+                  style: {
+                    width: '18rem'
+                  }
                 },
                 thisprops: {
-                  key:['__item','id']
+                  key: ['__item', 'id']
                 },
-                passprops:true,
-                children: [
-                  {
+                passprops: true,
+                children: [{
                     component: 'ReactBootstrap.Card.Header',
                     thisprops: {
-                      _children:['__item','id']
+                      _children: ['__item', 'id']
                     }
                   },
                   {
                     component: 'ReactBootstrap.Card.Body',
-                    passprops:true,
-                    children: [
-                      {
+                    passprops: true,
+                    children: [{
                         component: 'ReactBootstrap.Card.Title',
                         thisprops: {
-                          _children:['__item','title']
+                          _children: ['__item', 'title']
                         }
                       },
 
                       {
                         component: 'ReactBootstrap.Image',
                         props: {
-                          thumbnail:true,
+                          thumbnail: true,
                         },
                         thisprops: {
-                          src:['__item','thumbnailUrl']
+                          src: ['__item', 'thumbnailUrl']
                         }
                       },
                       {
                         component: 'ReactBootstrap.Card.Text',
                         thisprops: {
-                          _children:['__item','body']
+                          _children: ['__item', 'body']
                         }
                       },
-                      
+
                       {
                         component: 'ReactBootstrap.Button',
                         // thisprops: {
                         //   __photoitem:['__item'],
                         // },
                         __dangerouslyBindEvalProps: {
-                          onClick:`(function(__item){
+                          onClick: `(function(__item){
                             const newState = Object.assign({},this.state,{
                               cartItems:[].concat(this.props.store.cartItems,[__item])
                             });
@@ -507,51 +485,48 @@ window.placeholderTemplates = {
                         },
                         children: 'Add to cart',
                       }
-                    
+
                     ]
                   },
                 ],
               }
             }
-					]
-				},
-				"resources": {
-					"albums": "https://jsonplaceholder.typicode.com/albums/1/photos?_limit=12"
-				},
-				"pageData": [{
-					"tagName": "title",
-					"attributes": {
-					},
-					"innerHTML": "Albums"
-				}]
-			},
-			"/posts": {
-				"jsonx": {
-					"component": "ReactBootstrap.Container",
-          "children": [
-            {
-							"component": "h1",
-							"children": "post page"
+          ]
+        },
+        "resources": {
+          "albums": "https://jsonplaceholder.typicode.com/albums/1/photos?_limit=12"
+        },
+        "pageData": [{
+          "tagName": "title",
+          "attributes": {},
+          "innerHTML": "Albums"
+        }]
+      },
+      "/posts": {
+        "jsonx": {
+          "component": "ReactBootstrap.Container",
+          "children": [{
+              "component": "h1",
+              "children": "post page"
             },
             {
               component: 'ReactBootstrap.CardColumns',
               resourceprops: {
-                __spread:['posts'],
+                __spread: ['posts'],
               },
               __spreadComponent: spreadPosts,
             }
-					]
-				},
-				"resources": {
-					"posts": "https://jsonplaceholder.typicode.com/posts?_limit=10"
-				},
-				"pageData": [{
-					"tagName": "title",
-					"attributes": {
-					},
-					"innerHTML": "Posts"
-				}]
-			},
+          ]
+        },
+        "resources": {
+          "posts": "https://jsonplaceholder.typicode.com/posts?_limit=10"
+        },
+        "pageData": [{
+          "tagName": "title",
+          "attributes": {},
+          "innerHTML": "Posts"
+        }]
+      },
       '__error_404': {
         jsonx: {
           component: 'div',
@@ -620,37 +595,36 @@ window.placeholderTemplates = {
               children: 'Login'
             },
             {
-              component: 'Formik.Formik',
+              component: 'formik.Formik',
               props: {
                 initialValues: {
                   username: '',
                   password: ''
                 },
               },
-              __dangerouslyInsertFunctionComponents:{
-                render: {
+              __dangerouslyInsertFunctionComponents: {
+                component: {
                   reactComponent: {
                     component: 'form',
                     thisprops: {
-                      onSubmit:['handleSubmit']
+                      onSubmit: ['handleSubmit']
                     },
-                    children: [
-                      {
-                        component: 'Formik.Field',
+                    children: [{
+                        component: 'formik.Field',
                         props: {
                           type: 'text',
                           name: 'username',
-                          placeholder:'username',
+                          placeholder: 'username',
                         }
                       },
                       {
-                        component: 'Formik.ErrorMessage',
+                        component: 'formik.ErrorMessage',
                         props: {
-                          name:'username'
+                          name: 'username'
                         }
                       },
                       {
-                        component: 'Formik.Field',
+                        component: 'formik.Field',
                         props: {
                           type: 'password',
                           name: 'password',
@@ -659,9 +633,9 @@ window.placeholderTemplates = {
                       {
                         component: 'button',
                         props: {
-                          type:'submit'
+                          type: 'submit'
                         },
-                        children:'Submit'
+                        children: 'Submit'
                       },
                     ]
                   }
@@ -834,9 +808,9 @@ window.placeholderTemplates = {
       //   },
       // },
       '/posts/:id/comments': {
-				"resources": {
-					"comments": "https://jsonplaceholder.typicode.com/posts/:id/comments"
-				},
+        "resources": {
+          "comments": "https://jsonplaceholder.typicode.com/posts/:id/comments"
+        },
         jsonx: {
           component: 'ReactModal',
           props: {
@@ -855,58 +829,54 @@ window.placeholderTemplates = {
           // __functionProps: {
           //   onRequestClose:['func:this.props.toggleMatchedRouteLayer_modal']
           // },
-          children: [
-            {
-              "component": "ReactBootstrap.Container",
-              children: [
-                {
-                  component: 'h2',
-                  children:'Comments',
-                  
+          children: [{
+            "component": "ReactBootstrap.Container",
+            children: [{
+                component: 'h2',
+                children: 'Comments',
+
+              },
+              {
+                component: 'div',
+                resourceprops: {
+                  __spread: ['comments'],
                 },
-                {
-                  component: 'div',
-                  resourceprops: {
-                    __spread:['comments'],
+                __spreadComponent: {
+                  component: 'ReactBootstrap.Alert',
+                  props: {
+                    // style: { width: '18rem' }
                   },
-                  __spreadComponent: {
-                    component: 'ReactBootstrap.Alert',
-                    props: {
-                      // style: { width: '18rem' }
-                    },
-                    passprops: true,
-                    children: [
-                      {
-                        component: 'ReactBootstrap.Alert.Heading',
-                        thisprops: {
-                          _children: [ '__item', 'name' ]
-                        }
-                      },
-                      {
-                        component: 'p',
-                        thisprops: {
-                          _children: [ '__item', 'body' ]
-                        }
-                      },
-                      {
-                        component: 'hr',
-                      },
-                      {
-                        component:'p',
-                        thisprops: {
-                          _children: [ '__item', 'email' ]
-                        }
-                      
+                  passprops: true,
+                  children: [{
+                      component: 'ReactBootstrap.Alert.Heading',
+                      thisprops: {
+                        _children: ['__item', 'name']
                       }
-                    ]
-                  }
+                    },
+                    {
+                      component: 'p',
+                      thisprops: {
+                        _children: ['__item', 'body']
+                      }
+                    },
+                    {
+                      component: 'hr',
+                    },
+                    {
+                      component: 'p',
+                      thisprops: {
+                        _children: ['__item', 'email']
+                      }
+
+                    }
+                  ]
                 }
-              ]
-            }
-          ],
+              }
+            ]
+          }],
 
         }
       }
     }
-	}
+  }
 }

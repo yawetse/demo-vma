@@ -2,6 +2,6 @@
   "name": "test-vmx",
   "private": true,
   "dependencies": {
-    "@viewx/vxa": "0.0.8"
+    "@viewx/vxa": "^0.2.3"
   }
 }
